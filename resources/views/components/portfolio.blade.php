@@ -19,7 +19,7 @@
                             <div class="e dj ma od wh vd">
                                 <img src="{{ $item->image }}" alt="image" class="bc" />
                             </div>
-                            <h3 class="mt-6"> <a href="{{ route('show', ['id' => $item->id]) }}" class="fh jh ui zg lb ua"> {{ $item->name }} </a> </h3>
+                            <h3 class="mt-6"> <a href="{{ route('project.show', ['id' => $item->id]) }}" class="fh jh ui zg lb ua"> {{ $item->name }} </a> </h3>
                             <p class="eh ug lh">{{ substr($item->description, 0 ,80) }}...</p>
                         </div>
                     </div>
