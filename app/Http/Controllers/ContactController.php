@@ -8,7 +8,6 @@ class ContactController extends Controller
 {
     //pages
     public function index(){
-        // social link and footer contact information
         $socialData = json_decode(file_get_contents(storage_path('data/social.json')));
         $contactData = json_decode(file_get_contents(storage_path('data/contact.json')));
 
@@ -19,7 +18,15 @@ class ContactController extends Controller
     }
 
     public function store(Request $request) {
-        $userData = $request->all();
+        $validated = $request->validate([
+            'name' => 'required|string|max:100',
+            'company' => 'nullable|string|max:100',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'text' => 'required|string',
+        ]);
+        // dd($request->all());
+        $userData = $validated;
 
         // Read existing data, if any
         $existingData = [];
